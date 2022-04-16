@@ -1,0 +1,75 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+/* Importing Bootstrap SCSS file. */
+
+@import '~bootstrap/scss/bootstrap';
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+    color: #171717;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    font-size: 15px;
+    color: #444447;
+}
+
+.primary_color {
+    background-color: #e4332d;
+}
+
+.secondary_color {
+    background-color: #37395f;
+}
+
+.p_color {
+    color: #37395f;
+}
+
+.s_color {
+    color: red;
+}
+
+
+/* navbar */
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+select {
+    -webkit-appearance: none;
+    width: 50px;
+    padding: 3px !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+
+/* Importing Bootstrap SCSS file. */
+
+@import '~bootstrap/scss/bootstrap';
+.pointer{
+    cursor: pointer;
+}

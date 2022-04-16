@@ -1,0 +1,14 @@
+
+.container{
+    padding-top: 30px;
+  }
+.main-section{
+  padding: 15px;
+  background:#ffff;
+}
+.custom-file-control::after {
+content: "Choose file...";
+}
+.custom-file-control::before {
+content: "Browse";
+}

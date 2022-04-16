@@ -1,0 +1,226 @@
+
+<div class="container">
+    <div class="row">
+        <div class="offset-lg-2 col-lg-8 col-sm-12 col-12 border rounded main-section">
+            <h3 class="text-center text-inverse">Staff Registration</h3>
+            <hr>
+            <form class="container" [formGroup]="staffForm" (ngSubmit)="staff()">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label class="text-inverse" for="validationCustom01">First Name*</label>
+                            <input type="text" class="form-control" formControlName="firstName"
+                                [attr.disabled]="disabled ? '' : null"
+                                [ngClass]="{ 'is-invalid': submitted && staffFormError.firstName.errors }"
+                                placeholder="Enter First Name*">
+                            <div *ngIf="submitted && staffFormError.firstName.errors" class="invalid-feedback">
+                                <div *ngIf="staffFormError.firstName.errors.required" class="error">First Name
+                                    required*
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label class="text-inverse" for="validationCustom02">Last Name</label>
+                            <input type="text" class="form-control" formControlName="lastName"
+                                [attr.disabled]="disabled ? '' : null"
+                                [ngClass]="{ 'is-invalid': submitted && staffFormError.lastName.errors }"
+                                placeholder="Enter Last Name">
+                            <div *ngIf="submitted && staffFormError.lastName.errors" class="invalid-feedback">
+                                <div *ngIf="staffFormError.lastName.errors.required" class="error">Last Name
+                                    required*
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label class="text-inverse" for="validationCustom01">Registration Number</label>
+                            <input type="text" class="form-control" placeholder="Enter Registration Number"
+                                (keyup)="registration()" formControlName="registrationNumber"
+                                [attr.disabled]="disabled ? '' : null"
+                                [ngClass]="{ 'is-invalid': submitted && staffFormError.registrationNumber.errors }">
+                            <div *ngIf="submitted && staffFormError.registrationNumber.errors" class="invalid-feedback">
+                                <div *ngIf="staffFormError.registrationNumber.errors.required" class="error">
+                                    Registration
+                                    Number
+                                    required*
+                                </div>
+                            </div>
+                            <div *ngIf="submitted && !staffFormError.registrationNumber.errors && !registrationUnique"
+                                class="error">
+                                Registration
+                                Number Exist
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label class="text-inverse" for="validationCustom02">Mobile Number</label>
+                            <input type="text" formControlName="mobileNumber" [attr.disabled]="disabled ? '' : null"
+                                [ngClass]="{ 'is-invalid': submitted && staffFormError.mobileNumber.errors }"
+                                class="form-control" placeholder="Enter Mobile Number">
+                            <div *ngIf="submitted && staffFormError.mobileNumber.errors" class="invalid-feedback">
+                                <div *ngIf="staffFormError.mobileNumber.errors.required" class="error">Phone Number
+                                    required
+                                </div>
+                                <div *ngIf="staffFormError.mobileNumber.errors.minlength" class="error">Phone number
+                                    must 10
+                                    digit</div>
+                                <div *ngIf="staffFormError.mobileNumber.errors.maxlength" class="error">Phone number
+                                    must 10
+                                    digit</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label class="text-inverse" for="validationCustom01">Gender</label>
+                            <select class="custom-select d-block form-control" formControlName="gender"
+                                [attr.disabled]="disabled ? '' : null"
+                                [ngClass]="{ 'is-invalid': submitted && staffFormError.gender.errors }">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label class="text-inverse" for="validationCustom02">Alternate Number</label>
+                            <input type="text" formControlName="alternateNumber" class="form-control"
+                                [attr.disabled]="disabled ? '' : null"
+                                [ngClass]="{ 'is-invalid': submitted && staffFormError.alternateNumber.errors }"
+                                placeholder="Enter Alternate Number">
+                            <div *ngIf="submitted && staffFormError.alternateNumber.errors" class="invalid-feedback">
+                                <div *ngIf="staffFormError.alternateNumber.errors.minlength" class="error">Phone number
+                                    must 10
+                                    digit</div>
+                                <div *ngIf="staffFormError.mobileNumber.errors.maxlength" class="error">Phone number
+                                    must 10
+                                    digit</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label class="text-inverse" for="validationCustom01">Block</label>
+                            <input type="text" class="form-control" formControlName="block"
+                                [attr.disabled]="disabled ? '' : null"
+                                [ngClass]="{ 'is-invalid': submitted && staffFormError.block.errors }"
+                                placeholder="Enter Block Name" formControlName="block">
+                            <div *ngIf="submitted && staffFormError.block.errors" class="invalid-feedback">
+                                <div *ngIf="staffFormError.block.errors.required" class="error">
+                                    Block
+                                    required*
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label class="text-inverse" for="validationCustom02">District</label>
+                            <input type="text" formControlName="district" class="form-control"
+                                [attr.disabled]="disabled ? '' : null"
+                                [ngClass]="{ 'is-invalid': submitted && staffFormError.district.errors }"
+                                placeholder="Enter District">
+                            <div *ngIf="submitted && staffFormError.district.errors" class="invalid-feedback">
+                                <div *ngIf="staffFormError.district.errors.required" class="error">
+                                    District
+                                    required*
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 col-12">
+                        <div class="form-group">
+                            <label class="text-inverse">Email</label>
+                            <input type="email" class="form-control" formControlName="email" (keyup)="email()"
+                                [attr.disabled]="disabled ? '' : null"
+                                [ngClass]="{ 'is-invalid': submitted && staffFormError.email.errors }"
+                                placeholder="Email">
+                            <div *ngIf="submitted && staffFormError.email.errors" class="invalid-feedback">
+                                <div *ngIf="staffFormError.email.errors.required" class="error">Email required</div>
+                                <div *ngIf="staffFormError.email.errors.email" class="error">Invalid Email </div>
+                            </div>
+                        </div>
+                        <div *ngIf="submitted && !staffFormError.email.errors && !emailUnique" class="error">
+                            Email Already Exist
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label class="text-inverse" for="inputpassword">Password</label>
+                            <input type="password" class="form-control" formControlName="password"
+                                [attr.disabled]="disabled ? '' : null"
+                                [ngClass]="{ 'is-invalid': submitted && staffFormError.password.errors }"
+                                placeholder="password">
+                            <div *ngIf="submitted && staffFormError.block.errors" class="invalid-feedback">
+                                <div *ngIf="staffFormError.block.errors.required" class="error">
+                                    Password
+                                    required*
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-12 text-center">
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="row">
+                    <div class="col-lg-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label class="text-inverse" for="validationCustom03">City</label>
+                            <input type="text" class="form-control" id="validationCustom03" placeholder="City" >
+                            <div class="invalid-feedback">
+                                Please provide a valid city.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label class="text-inverse" for="select-menu">Select any value</label>
+                            <select class="custom-select d-block form-control" id="image" >
+                                <option value="">Open this select menu</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please selected any option.
+                            </div>
+                        </div>
+                    </div>
+                </div> -->

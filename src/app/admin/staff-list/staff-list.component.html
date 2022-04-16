@@ -1,0 +1,45 @@
+<div class="container">
+  <h2>Staff List</h2>
+  <!-- <ul class="responsive-table">
+    <li class="table-header">
+      <div class="col col-1">Registration Id</div>
+      <div class="col col-2">Name</div>
+      <div class="col col-2">Email</div>
+      <div class="col col-2">Block</div>
+      <div class="col col-2">Action</div>
+    </li>
+    <li class="table-row" *ngFor="let staff of staffList">
+      <div class="col col-1" data-label="Job Id">{{staff.registration_number}}</div>
+      <div class="col col-2" >{{staff.user.first_name}} {{staff.user.last_name}}</div>
+      <div class="col col-2" >{{staff.user.email}}</div>
+      <div class="col col-2" >{{staff.block}}</div>
+      <div class="col col-2" >{{staff.block}}</div>
+    </li>
+  </ul> -->
+  
+  <table class="table">
+    <thead class="thead-dark">
+      <tr class="text-center">
+        <th scope="col">SL No.</th>
+        <th scope="col">Registration ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Block</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-center" *ngFor="let staff of staffList; let index = index">
+        <th >{{index+1}}</th>
+        <th >{{staff.registration_number}}</th>
+        <td >{{staff.user.first_name}} {{staff.user.last_name}}</td>
+        <td >{{staff.user.email}}</td>
+        <td >{{staff.block}}</td>
+        <td >
+          <button type="button" class="btn btn-primary" (click)="editStaff(staff)">Details</button>
+          <button type="button" class="btn btn-danger" (click)="deleteStaff(staff.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
